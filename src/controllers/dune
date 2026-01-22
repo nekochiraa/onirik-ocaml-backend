@@ -1,0 +1,4 @@
+(library
+ (name controllers)
+ (libraries dream yojson models services utils)
+ (preprocess (pps lwt_ppx)))

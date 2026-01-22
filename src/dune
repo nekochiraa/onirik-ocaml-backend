@@ -1,4 +1,6 @@
 (executable
  (name main)
- (libraries dream yojson lwt lwt.unix)
+ (libraries
+   dream yojson lwt lwt.unix
+   models config utils db middleware services controllers routes)
  (preprocess (pps lwt_ppx)))
