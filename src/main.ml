@@ -12,6 +12,7 @@ let () =
     );
 
     (* POST /hello → on reçoit du texte en body *)
+    post "/register" Controllers.Request.register;
     post "/hello" (fun request ->
       let%lwt body = body request in
       json (Printf.sprintf {| { "message": "Bonjour %s" } |} body)

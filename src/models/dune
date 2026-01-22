@@ -1,3 +1,4 @@
 (library
  (name models)
- (libraries yojson))
+ (libraries yojson)
+ (modules email name password user_input user))

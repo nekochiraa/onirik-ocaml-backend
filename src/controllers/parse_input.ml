@@ -5,5 +5,5 @@ let user_input_from_json json =
     let email = Yojson.Safe.Util.to_string (List.assoc "email" fields) in
     let name = Yojson.Safe.Util.to_string (List.assoc "name" fields) in
     let password = Yojson.Safe.Util.to_string (List.assoc "password" fields) in 
-    Ok { User_input.mail; name; password}
+    Ok { Models.User_input.email; name; password}
   | _ -> Error "Invalid JSON"

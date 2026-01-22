@@ -1,11 +1,11 @@
   let register request = 
     let%lwt body = Dream.body request in
-    match user_input_of_json (Yojson.Safe.from_string body) with
+    match Parse_input.user_input_from_json (Yojson.Safe.from_string body) with
       | Error msg -> 
-        Dream.json ~status: `Bad_Request (`String msg)
+        Dream.json ~status: `Bad_Request (Yojson.Safe.to_string (`String msg))
       |Ok input -> 
-        match User_service.register_user input with
+        match Services.User_service.register_user input with
           |Ok _ -> 
-              Dream.json ~status:`Created (`String "User created")
-          |Error e -> 
-              Dream.json ~status:`Bad_Request (`String "Invalid user")
+              Dream.json ~status:`Created (Yojson.Safe.to_string (`String "User created"))
+          |Error _ -> 
+              Dream.json ~status:`Bad_Request (Yojson.Safe.to_string (`String "Invalid user"))

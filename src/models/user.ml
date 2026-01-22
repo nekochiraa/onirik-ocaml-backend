@@ -1,3 +1,6 @@
+open Email
+open Name
+open Password
 type t = {
   email : Email.t;
   name : Name.t;
